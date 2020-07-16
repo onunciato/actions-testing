@@ -32,5 +32,5 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Do a thing
-      if: github.event.pull_request.merged == 'true'
-      run: echo "it merged!"
+      run: cat $GITHUB_EVENT_PATH
+    
