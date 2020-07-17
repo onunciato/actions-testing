@@ -32,5 +32,7 @@ jobs:
         echo Add other actions to build,
         echo test, and deploy your project.
     - name: Do a thing
-      run: cat $GITHUB_EVENT_PATH
+      run: |
+        cat $GITHUB_EVENT_PATH
+        env | grep GITHUB
     
