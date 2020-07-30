@@ -24,7 +24,7 @@ if [[ "$GITHUB_EVENT_NAME" == "pull_request" && ! -z "$GITHUB_EVENT_PATH" ]]; th
 
     pr_number="$(echo $event | jq -r ".number")"
     pr_action="$(echo $event | jq -r ".action")"
-    pr_merged="$(echo $event | jq -r ".merged")"
+    pr_merged="$(echo $event | jq -r ".pull_request.merged")"
 
     echo "${pr_number}"
     echo "${pr_action}"
