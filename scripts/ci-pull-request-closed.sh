@@ -16,12 +16,19 @@ post_github_pr_comment() {
          $pr_comment_api_url > /dev/null
 }
 
+echo "${GITHUB_EVENT_NAME}"
+echo "${GITHUB_EVENT_PATH}"
+
 if [[ "$GITHUB_EVENT_NAME" == "pull_request" && ! -z "$GITHUB_EVENT_PATH" ]]; then
     event="$(cat "$GITHUB_EVENT_PATH")"
 
     pr_number="$(echo $event | jq -r ".number")"
     pr_action="$(echo $event | jq -r ".action")"
     pr_merged="$(echo $event | jq -r ".merged")"
+
+    echo "${pr_number}"
+    echo "${pr_action}"
+    echo "${pr_merged}"
 
     if [[ "$pr_action" == "closed" && "$pr_merged" == "false" ]]; then
         pr_bucket_name="$(origin_bucket_prefix)-pr-${pr_number}"

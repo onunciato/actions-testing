@@ -18,6 +18,6 @@ jobs:
         env | grep GITHUB
 
     - name: Clean up
-      run: ./scripts/ci-pull-request-closed.sh
+      run: make ci_pull_request_closed
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
