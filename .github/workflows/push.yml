@@ -28,9 +28,16 @@ jobs:
           file_pattern: "*"
           commit_message: Commit asset bundles
 
-      - uses: everlytic/branch-merge@1.1.2
+      - name: Merge into release
+        # uses: everlytic/branch-merge@1.1.2
+        # with:
+        #   github_token: ${{ secrets.GITHUB_TOKEN }}
+        #   source_ref: ${{ github.ref }}
+        #   target_branch: release
+        #   commit_message_template: '[Automated] Merge {source_ref} into {target_branch}'
+        uses: devmasx/merge-branch@v1.4.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_ref: ${{ github.ref }}
+          type: now
+          from_branch: master
           target_branch: release
-          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
