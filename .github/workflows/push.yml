@@ -34,4 +34,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           source_ref: ${{ github.ref }}
           target_branch: release
-          commit_message_template: '[Automated] Merge {source_ref} into {target_branch}'
+          commit_message_template: "[Automated] Merge {source_ref} into {target_branch}"
