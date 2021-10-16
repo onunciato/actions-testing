@@ -27,3 +27,10 @@ jobs:
         with:
           file_pattern: "*"
           commit_message: Commit asset bundles
+
+      - uses: everlytic/branch-merge@1.1.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_ref: ${{ github.ref }}
+          target_branch: release
+          commit_message_template: '[Automated] Merged {source_ref} into target {target_branch}'
