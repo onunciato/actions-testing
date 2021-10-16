@@ -27,4 +27,3 @@ jobs:
         with:
           file_pattern: "*"
           commit_message: Commit asset bundles
-          branch: release
