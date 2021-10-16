@@ -1,3 +1,3 @@
 #!/bin/bash
 
-touch somefile.txt
+echo "some new line" >> somefile.txt
