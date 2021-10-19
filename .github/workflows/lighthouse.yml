@@ -3,7 +3,7 @@ on:
   schedule:
     # * is a special character in YAML so you have to quote this string.
     # Run every day at 3:00PM UTC.
-    - cron:  '3 55 * * *'
+    - cron:  '0 18 * * *'
 jobs:
   all:
     name: Lighthouse
