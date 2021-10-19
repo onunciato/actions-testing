@@ -16,4 +16,4 @@ jobs:
             https://chris.nunciato.org/
             https://chris.nunciato.org/photos/
           uploadArtifacts: true
-          temporaryPublicStorage: true
+          temporaryPublicStorage: false
