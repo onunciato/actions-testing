@@ -2,7 +2,7 @@ name: "Scheduled jobs: Lighthouse CI"
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string.
-    # Run every day at 3:00PM UTC.
+    # Run every day at 6:00PM UTC.
     - cron:  '0 18 * * *'
 jobs:
   all:
