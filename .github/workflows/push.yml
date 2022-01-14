@@ -16,22 +16,23 @@ jobs:
       - name: Check out branch
         uses: actions/checkout@v2
 
-      - name: Build assets
-        run: |
-          make do-stuff
+      - name: Read the PR number
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.number }}
+        run: |
+          echo "From Bash: ${PR_NUMBER}"
+          node -e "console.log('From Node:', process.env.PR_NUMBER);"
 
-      - name: Commit artifacts
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: "*"
-          commit_message: Commit asset bundles
+#       - name: Commit artifacts
+#         uses: stefanzweifel/git-auto-commit-action@v4
+#         with:
+#           file_pattern: "*"
+#           commit_message: Commit asset bundles
 
-      - name: Merge into release
-        uses: everlytic/branch-merge@1.1.2
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          source_ref: ${{ github.ref }}
-          target_branch: release
-          commit_message_template: "[Automated] Merge {source_ref} into {target_branch}"
+#       - name: Merge into release
+#         uses: everlytic/branch-merge@1.1.2
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           source_ref: ${{ github.ref }}
+#           target_branch: release
+#           commit_message_template: "[Automated] Merge {source_ref} into {target_branch}"
