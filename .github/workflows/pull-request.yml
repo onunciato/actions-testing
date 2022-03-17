@@ -10,6 +10,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Maybe run
+        run: |
+          echo "running"
       - name: Actually run the checks
         if: ${{ github.event_name == 'workflow_dispatch' || (github.event.issue.pull_request && contains( github.event.comment.body, '/run-checks' )) }}
         run: |
