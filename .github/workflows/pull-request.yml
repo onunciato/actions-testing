@@ -1,6 +1,8 @@
 name: Pull Request
 on:
   pull_request:
+    branches:
+      - master
     types:
       - opened
   issue_comment:
@@ -14,6 +16,6 @@ jobs:
         run: |
           echo "running"
       - name: Actually run the checks
-        if: ${{ github.event_name == 'workflow_dispatch' || (github.event.issue.pull_request && contains( github.event.comment.body, '/run-checks' )) }}
+        if: contains(github.event.comment.body, '/run-checks')
         run: |
           echo "yay!"
