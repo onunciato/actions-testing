@@ -9,9 +9,9 @@ on:
 jobs:
   dispatch:
     if: contains(github.event.comment.body, '/run-checks')
-    name: Handle PR Comment
+    name: Run PR Checks
     runs-on: ubuntu-latest
     steps:
-      - name: Run PR checks
+      - name: Run the first check
         run: |
           echo "Hey, I ran!"
