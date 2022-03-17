@@ -1,0 +1,12 @@
+name: Run PR checks
+on:
+  repository_dispatch:
+    types:
+      - run-request
+jobs:
+  run_checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run required checks
+        run: |
+          echo "Hey, I ran!"
