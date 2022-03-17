@@ -9,7 +9,7 @@ on:
 jobs:
   run_pr_checks:
     if: contains(github.event.comment.body, '/run-checks')
-    name: Run PR Checks
+    name: Run all checks
     runs-on: ubuntu-latest
     steps:
       - name: Run the first check
