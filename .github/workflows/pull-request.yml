@@ -1,0 +1,22 @@
+name: Pull Request
+on:
+  pull_request:
+    types:
+      - opened
+  issue_comment:
+    types:
+      - created
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: khan/pull-request-comment-trigger@master
+        id: check
+        with:
+          trigger: '@run-checks'
+          reaction: rocket
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+      - run: |
+          echo "yay!"
+        if: steps.check.outputs.triggered == 'true'
