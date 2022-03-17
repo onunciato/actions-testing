@@ -1,16 +1,17 @@
-name: Handle PR Comment
+name: Run PR checks
 on:
+  pull_request:
+    branches:
+      - master
   issue_comment:
     types:
       - created
 jobs:
   dispatch:
+    if: contains(github.event.comment.body, '/run-checks')
     name: Handle PR Comment
     runs-on: ubuntu-latest
     steps:
-      - name: Repository Dispatch
-        # if: contains(github.event.comment.body, '/run-checks')
-        uses: peter-evans/repository-dispatch@v1
-        with:
-          token: ${{ secrets.PULUMI_BOT_TOKEN }}
-          event-type: run-request
+      - name: Run PR checks
+        run: |
+          echo: "Hey, I ran!"
