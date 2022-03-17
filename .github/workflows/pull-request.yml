@@ -10,13 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: khan/pull-request-comment-trigger@master
-        id: check
-        with:
-          trigger: '@run-checks'
-          reaction: rocket
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
-      - run: |
+      - name: Actually run the checks
+        if: ${{ github.event_name == 'workflow_dispatch' || (github.event.issue.pull_request && contains( github.event.comment.body, '/run-checks' )) }}
+        run: |
           echo "yay!"
-        if: steps.check.outputs.triggered == 'true'
