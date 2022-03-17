@@ -5,6 +5,7 @@ on:
       - created
 jobs:
   dispatch:
+    name: Handle Comment
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
