@@ -11,10 +11,12 @@ jobs:
       perms: ${{ steps.check-perms.outputs.perms }}
     steps:
       - uses: actions/checkout@v2
-      - id: check-perms
+      - name: Check perms
+        id: check-perms
         run: |
           npm install
           perms="$(node ./scripts/get-repo-perms.js)"
+          echo $perms
           echo "::set-output name=perms::$perms"
   run_push_jobs:
     name: Do all the things
