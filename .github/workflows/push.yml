@@ -10,6 +10,7 @@ jobs:
     outputs:
       perms: ${{ steps.check-perms.outputs.perms }}
     steps:
+      - uses: actions/checkout@v2
       - id: check-perms
         run: |
           perms="$(node ./scripts/get-repo-perms.js)"
