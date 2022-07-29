@@ -11,10 +11,11 @@ jobs:
     steps:
       - id: check-perms
         run: |
-          perms="$(node scripts/check-repo-perms.js)"
+          perms="$(node scripts/get-repo-perms.js)"
           echo "::set-output name=perms::$perms"
   run_push_jobs:
     name: Do all the things
+    needs: check_perms
     if: ${{ needs.check-perms.outputs.perms == 'admin' }}
     runs-on: self-hosted
     steps:
