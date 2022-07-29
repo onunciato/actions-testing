@@ -1,38 +1,13 @@
-name: Build
+name: Handle pushes
 on:
   push:
     branches:
       - master
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-18.04
+  run_push_jobs:
+    name: Do all the things
+    runs-on: self-hosted
     steps:
-      - name: Install Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Check out branch
-        uses: actions/checkout@v2
-
-      - name: Read the PR number
-        env:
-          PR_NUMBER: ${{ github.event.number }}
+      - name: Do a thing
         run: |
-          echo "From Bash: ${PR_NUMBER}"
-          node -e "console.log('From Node:', process.env.PR_NUMBER);"
-
-#       - name: Commit artifacts
-#         uses: stefanzweifel/git-auto-commit-action@v4
-#         with:
-#           file_pattern: "*"
-#           commit_message: Commit asset bundles
-
-#       - name: Merge into release
-#         uses: everlytic/branch-merge@1.1.2
-#         with:
-#           github_token: ${{ secrets.GITHUB_TOKEN }}
-#           source_ref: ${{ github.ref }}
-#           target_branch: release
-#           commit_message_template: "[Automated] Merge {source_ref} into {target_branch}"
+          echo "Hey look, I did the thing!"
