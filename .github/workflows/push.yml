@@ -1,0 +1,13 @@
+name: Handle pushes
+on:
+  push:
+    branches:
+      - master
+jobs:
+  run_push_jobs:
+    name: Do all the things
+    runs-on: self-hosted
+    steps:
+      - name: Do a thing
+        run: |
+          echo "Hey look, I did the thing!"

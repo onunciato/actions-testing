@@ -1,0 +1,19 @@
+name: "Scheduled jobs: Lighthouse CI"
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string.
+    # Run every day at 6:00PM UTC.
+    - cron:  '21 19 * * *'
+jobs:
+  all:
+    name: Lighthouse
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v8
+        with:
+          urls: |
+            https://chris.nunciato.org/
+            https://chris.nunciato.org/photos/
+          uploadArtifacts: true
+          temporaryPublicStorage: true

@@ -1,0 +1,13 @@
+name: Handle pull requests
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  run_pr_checks:
+    name: Run all checks
+    runs-on: self-hosted
+    steps:
+      - name: Run a check
+        run: |
+          echo "Hey look, I ran!"
