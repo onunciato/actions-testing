@@ -16,8 +16,9 @@ jobs:
         run: |
           npm install
           perms="$(node ./scripts/get-repo-perms.js)"
-          echo $perms
           echo "::set-output name=perms::$perms"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   run_push_jobs:
     name: Do all the things
     needs: check_perms
