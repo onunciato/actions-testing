@@ -4,10 +4,29 @@ on:
     branches:
       - master
 jobs:
+  check_perms:
+    name: Check repo permissions
+    runs-on: ubuntu-latest
+    outputs:
+      perms: ${{ steps.check-perms.outputs.perms }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Check perms
+        id: check-perms
+        run: |
+          npm install
+          perms="$(node ./scripts/get-repo-perms.js)"
+          echo $perms
+          echo "::set-output name=perms::$perms"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   run_pr_checks:
     name: Run all checks
     runs-on: self-hosted
+    needs: check_perms
+    if: ${{ needs.check_perms.outputs.perms == 'admin' }}
     steps:
-      - name: Run a check
+      - name: Do a thing
         run: |
-          echo "Hey look, I ran!"
+          echo "${{ needs.check_perms.outputs.perms == 'admin' }}"
+          echo "${{ needs.check_perms.outputs.perms }}"
