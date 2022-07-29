@@ -5,13 +5,14 @@ on:
       - master
 jobs:
   check_perms:
+    name: Check repo permissions
     runs-on: ubuntu-latest
     outputs:
       perms: ${{ steps.check-perms.outputs.perms }}
     steps:
       - id: check-perms
         run: |
-          perms="$(node scripts/get-repo-perms.js)"
+          perms="$(node ./scripts/get-repo-perms.js)"
           echo "::set-output name=perms::$perms"
   run_push_jobs:
     name: Do all the things
