@@ -13,6 +13,7 @@ const octokit = require("@octokit/rest");
         console.log(result.data.permission);
     }
     catch (err) {
+        throw err;
         console.log("none");
     }
 })();
