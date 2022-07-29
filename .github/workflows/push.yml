@@ -22,7 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   run_push_jobs:
     name: Do all the things
-#     runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: check_perms
 #     if: ${{ needs.check_perms.outputs.perms == 'admin' }}
     steps:
