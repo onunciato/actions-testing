@@ -22,10 +22,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   run_push_jobs:
     name: Do all the things
-    needs: check_perms
-    if: ${{ needs.check-perms.outputs.perms == 'admin' }}
     runs-on: self-hosted
+    needs: check_perms
+#     if: ${{ needs.check_perms.outputs.perms == 'admin' }}
     steps:
       - name: Do a thing
         run: |
+          echo "${{ needs.check_perms.outputs.perms == 'admin' }}"
           echo "Hey look, I did the thing!"
