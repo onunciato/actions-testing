@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - id: check-perms
         run: |
+          npm install
           perms="$(node ./scripts/get-repo-perms.js)"
           echo "::set-output name=perms::$perms"
   run_push_jobs:
