@@ -3,20 +3,17 @@ on:
   pull_request:
     branches:
       - master
-jobs:
-  check_perms:
-    name: Check repo permissions
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check perms
-        uses: cnunciato/check-repo-perms@v0.2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+jobs:    
   run_pr_checks:
     name: Run all checks
     runs-on: ubuntu-latest
-    needs: check_perms
     steps:
+      - name: Check perms
+        id: perms
+        uses: cnunciato/check-repo-perms@v0.3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Do a thing
+#         if: ${{}}
         run: |
-          echo "${{ needs.check_perms.outputs }}"
+          echo "${{ steps.perms.outputs.permission }}"
