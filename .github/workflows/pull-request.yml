@@ -17,9 +17,8 @@ jobs:
     name: Run all checks
     runs-on: self-hosted
     needs: check_perms
-    if: ${{ needs.check_perms.outputs.permission == 'admin' }}
+    if: ${{ needs.check_perms.outputs.has-write }}
     steps:
       - name: Do a thing
         run: |
-          echo "${{ needs.check_perms.outputs.perms == 'admin' }}"
-          echo "${{ needs.check_perms.outputs.perms }}"
+          echo "Hey, I did it!"
