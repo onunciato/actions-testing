@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Check repo permissions
         id: perms
-        uses: cnunciato/check-repo-perms@v0.10
+        uses: cnunciato/check-repo-perms@v0.12
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Do the trusted-only thing
