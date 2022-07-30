@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Check perms
         id: perms
-        uses: cnunciato/check-repo-perms@v0.1
+        uses: cnunciato/check-repo-perms@v0.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
   run_pr_checks:
