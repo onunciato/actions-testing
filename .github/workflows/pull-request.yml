@@ -14,10 +14,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
   run_pr_checks:
     name: Run all checks
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: check_perms
-    if: ${{ needs.check_perms.outputs.perms }}
     steps:
       - name: Do a thing
         run: |
-          echo "Hey, I did it!"
+          echo "${{ needs.check_perms.outputs.perms }}"
