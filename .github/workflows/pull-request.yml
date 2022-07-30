@@ -10,10 +10,9 @@ jobs:
     steps:
       - name: Check perms
         id: perms
-        uses: cnunciato/check-repo-perms@v0.3
+        uses: cnunciato/check-repo-perms@v0.4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Do a thing
-#         if: ${{}}
         run: |
           echo "${{ steps.perms.outputs.permission }}"
