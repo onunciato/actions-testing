@@ -1,3 +1,3 @@
-# actions-testing yay
+# actions-testiny
 
-Hiee. This is Oliver's change to the README.
+Fix this readme. It's terrible.
