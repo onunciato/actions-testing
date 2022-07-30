@@ -8,7 +8,7 @@ jobs:
     name: Run all checks
     runs-on: ubuntu-latest
     steps:
-      - name: Check perms
+      - name: Check repo permissions
         id: perms
         uses: cnunciato/check-repo-perms@v0.10
         with:
