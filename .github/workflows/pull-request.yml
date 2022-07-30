@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check perms
-        id: perms
         uses: cnunciato/check-repo-perms@v0.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -17,7 +16,7 @@ jobs:
     name: Run all checks
     runs-on: self-hosted
     needs: check_perms
-    if: ${{ needs.check_perms.outputs.has-write }}
+    if: ${{ needs.check_perms.outputs.perms }}
     steps:
       - name: Do a thing
         run: |
