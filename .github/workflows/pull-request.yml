@@ -19,4 +19,4 @@ jobs:
     steps:
       - name: Do a thing
         run: |
-          echo "${{ check_perms.outputs }}"
+          echo "${{ needs.check_perms.outputs }}"
