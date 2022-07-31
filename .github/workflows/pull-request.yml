@@ -9,18 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       perms: ${{ steps.perms.outputs.permission }}
-      is_trusted: ${{ steps.perms.outputs.is_trusted }}
+      is_member_of_org: ${{ steps.perms.outputs.is_member_of_org }}
     steps:
       - name: Check repo permissions
         id: perms
-        uses: cnunciato/check-repo-perms@v0.14
+        uses: cnunciato/check-repo-perms@v0.15
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
   run_pr_checks:
     name: Run all checks
     runs-on: ubuntu-latest
     needs: check_repo_perms
-    if: ${{ needs.check_repo_perms.outputs.is_trusted == 'true' }}
+    if: ${{ needs.check_repo_perms.outputs.is_member_of_org == 'true' }}
     steps:
       - name: Do the trusted-only thing
         run: |
