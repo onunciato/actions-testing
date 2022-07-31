@@ -18,26 +18,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
   run_pr_checks:
     name: Run all checks
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: check_repo_perms
     if: ${{ needs.check_repo_perms.outputs.is_member_of_org == 'true' }}
     steps:
       - name: Do the trusted-only thing
         run: |
           echo "Doing the thing!"
-
-# jobs:    
-#   run_pr_checks:
-#     name: Run all checks
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Check repo permissions
-#         id: perms
-#         uses: cnunciato/check-repo-perms@v0.14
-#         with:
-#           token: ${{ secrets.GITHUB_TOKEN }}
-#       - name: Do the trusted-only thing
-#         if: ${{ steps.perms.outputs.is_trusted == 'true' }}
-#         run: |
-#           echo "Doing the thing!"
-
