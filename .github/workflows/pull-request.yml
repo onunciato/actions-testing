@@ -24,4 +24,6 @@ jobs:
     steps:
       - name: Do the trusted-only thing
         run: |
-          echo "Doing the thing!"
+          echo "$GITHUB_JOB_ID"
+          echo "$GITHUB_RUN_ID"
+          cat "/github/workflow/event.json"
