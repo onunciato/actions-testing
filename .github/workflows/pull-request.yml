@@ -28,3 +28,4 @@ jobs:
           echo "$GITHUB_RUN_ID"
           cat "$GITHUB_EVENT_PATH"
           echo "${{ github }}"
+          env
