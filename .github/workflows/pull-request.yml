@@ -16,6 +16,8 @@ jobs:
         uses: cnunciato/check-repo-perms@v0.18
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+    env:
+      HAS_WRITE: ${{ steps.perms.outputs.has_write }}
   run_pr_checks:
     name: Run all checks
     runs-on: self-hosted
@@ -28,4 +30,5 @@ jobs:
           echo "$GITHUB_RUN_ID"
           cat "$GITHUB_EVENT_PATH"
           echo "${{ github }}"
+          echo "has write: $HAS_WRITE"
           env
