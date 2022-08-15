@@ -1,4 +1,4 @@
-name: Handle pull requests
+name: Handle pushes
 on:
   push:
     branches:
