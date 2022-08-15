@@ -4,31 +4,12 @@ on:
     branches:
       - master
 jobs:    
-  check_repo_perms:
-    name: Check repo permissions
-    runs-on: ubuntu-latest
-    outputs:
-      perms: ${{ steps.perms.outputs.permission }}
-      has_write: ${{ steps.perms.outputs.has_write }}
-    steps:
-      - name: Check repo permissions
-        id: perms
-        uses: cnunciato/check-repo-perms@v0.18
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-    env:
-      HAS_WRITE: ${{ steps.perms.outputs.has_write }}
-  run_pr_checks:
+  run_all_checks:
     name: Run all checks
     runs-on: self-hosted
-    needs: check_repo_perms
-    if: ${{ needs.check_repo_perms.outputs.has_write == 'true' }}
     steps:
-      - name: Do the trusted-only thing
+      - name: Try to use secrets
         run: |
-          echo "$GITHUB_JOB_ID"
-          echo "$GITHUB_RUN_ID"
-          cat "$GITHUB_EVENT_PATH"
-          echo "${{ github }}"
-          echo "has write: $HAS_WRITE"
-          env
+          echo "$SOME_SECRET"
+        env:
+          SOME_SECRET: ${{ secrets.SOME_SECRET }}
